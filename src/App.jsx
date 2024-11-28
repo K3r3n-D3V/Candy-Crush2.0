@@ -25,6 +25,7 @@ const App = () => {
     const [candieToReplace, setCandieToReplace] = useState(null)
     const [score, setScore] = useState(0)
 
+    //this is a functon that will play songs when different types of matches are made
     const playSound = (id) => {
         document.getElementById(id).play();
     }
@@ -109,7 +110,11 @@ const App = () => {
             if (columns.every(square => currentCandies.current[square].color === decidedColor && !isBlank)) {
                 updateScore(num)
 
+                
+
                 let specialCnadyIndex = -1;
+
+            
                 if(num > 3){
                     specialCnadyIndex = columns.findIndex(col => indexes?.includes(col));
                     if(specialCnadyIndex === -1) specialCnadyIndex = 0;
@@ -279,8 +284,18 @@ const App = () => {
     }, [])
 
 
+
     return (
         <div className="app">
+        
+<video
+        className="background-video"
+        src="/public/sounds/Candy Crush Saga Theme Song Soundtrack.mp4"
+        autoPlay
+        loop
+    
+    ></video>
+
             <div className="score-board">
               <span>Score : </span><b>{score}</b>
             </div>
