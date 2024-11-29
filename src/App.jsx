@@ -283,14 +283,27 @@ const App = () => {
         return () => clearInterval(timer)
     }, [])
 
+
+    const musicRef = useRef(null); // Reference to the audio element
+    const [isMusicPlaying, setIsMusicPlaying] = useState(true);
+
+    const toggleMusic = () => {
+        if (isMusicPlaying) {
+            musicRef.current.pause(); // Pause the music
+        } else {
+            musicRef.current.play(); // Play the music
+        }
+        setIsMusicPlaying(!isMusicPlaying); // Toggle the music state
+    };
+
     return (
         <div className="app">
- <video
-        className="background-video"
-        src="public/Candy Crush Saga Theme Song Soundtrack.mp4"
-        autoPlay
-        loop
-    ></video>
+            <audio id="background-music" ref={musicRef} src="public/Candy Crush Saga Theme Song Soundtrack.mp3" loop autoPlay></audio>
+
+{/* Button to Toggle Music */}
+<button onClick={toggleMusic}>
+    {isMusicPlaying ? 'Pause Music' : 'Play Music'}
+</button>
             <div className="score-board">
               <span>Score : </span><b>{score}</b>
             </div>
