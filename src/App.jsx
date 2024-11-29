@@ -287,7 +287,7 @@ const App = () => {
         <div className="app">
  <video
         className="background-video"
-        src="public/sounds/Candy Crush Saga Theme Song Soundtrack.mp4"
+        src="public/Candy Crush Saga Theme Song Soundtrack.mp4"
         autoPlay
         loop
     ></video>
